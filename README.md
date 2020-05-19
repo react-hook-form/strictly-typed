@@ -1,2 +1,2 @@
-# react-hook-form-typed-input
+# react-hook-form-typed-field
 Strictly typed input.
