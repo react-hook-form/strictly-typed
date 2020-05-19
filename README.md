@@ -1,7 +1,7 @@
 # react-hook-form-typed-field
 Strictly typed input.
 
-```
+```tsx
 const { control } = useForm<{
   nested: [
     {
