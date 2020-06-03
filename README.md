@@ -1,4 +1,4 @@
-# react-hook-form-typed-field
+# @hookform/typed-field
 Strictly typed input.
 
 ```tsx

@@ -2,12 +2,12 @@
   "name": "@hookform/typed-field",
   "version": "0.0.0-development",
   "description": "React Hook Form strictly typed Field component.",
-  "main": "dist/react-hook-form-typed-field.js",
-  "module": "dist/react-hook-form-typed-field.esm.js",
-  "umd:main": "dist/react-hook-form-typed-field.umd.min.js",
-  "unpkg": "dist/react-hook-form-typed-field.umd.min.js",
-  "jsdelivr": "dist/react-hook-form-typed-field.umd.min.js",
-  "jsnext:main": "react-hook-form-typed-field.esm.js",
+  "main": "dist/typed-field.js",
+  "module": "dist/typed-field.esm.js",
+  "umd:main": "dist/typed-field.umd.min.js",
+  "unpkg": "dist/typed-field.umd.min.js",
+  "jsdelivr": "dist/typed-field.umd.min.js",
+  "jsnext:main": "typed-field.esm.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "files": [
@@ -33,14 +33,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/react-hook-form/react-hook-form-typed-field.git"
+    "url": "git+https://github.com/react-hook-form/typed-field.git"
   },
   "author": "Kotaro Sugawara <kotarella1110@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/react-hook-form/react-hook-form-typed-field/issues"
+    "url": "https://github.com/react-hook-form/typed-field/issues"
   },
-  "homepage": "https://github.com/react-hook-form/react-hook-form-typed-field#readme",
+  "homepage": "https://github.com/react-hook-form/typed-field#readme",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.1.0",
     "@rollup/plugin-json": "^4.0.3",
