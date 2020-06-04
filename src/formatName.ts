@@ -12,7 +12,7 @@ export const formatName = (
           return accumulator;
         }
         return [...accumulator, currentValue];
-      }, [] as (string | number)[])
+      }, [] as string[])
       .join('.');
   }
   return name;
