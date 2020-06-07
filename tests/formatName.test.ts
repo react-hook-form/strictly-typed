@@ -1,6 +1,6 @@
 import { formatName } from '../src/formatName';
 
-describe('formatInputName', () => {
+describe('formatName', () => {
   it('should format input name with string', () => {
     expect(formatName('test')).toBe('test');
   });
