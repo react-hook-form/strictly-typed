@@ -23,6 +23,8 @@ module.exports = {
         trailingComma: 'all',
       },
     ],
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/ban-types': 'off',
   },
   settings: {
     react: {
