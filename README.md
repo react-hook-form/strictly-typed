@@ -1,16 +1,35 @@
 # @hookform/typed-field
-Strictly typed input.
+
+React Hook Form strictly typed Field component.
+
+## Usage
 
 ```tsx
-const { control } = useForm<{
-  nested: [
-    {
-      key: string,
-    }
-  ]
-}>()
+import { useForm } from "react-hook-form";
+import { createTypedField } from "@hookform/typed-field";
 
-const TypedField = createField<FormValues>({ control });
+type FormValues = {
+  test: string;
+  nested: {
+    test: string;
+  }[];
+};
 
-<TypedField as={TextInput} name={['nested', 0, 'key2']} />
+export default function App() {
+  const { control, handleSubmit } = useForm<FormValues>();
+  const TypedField = createTypedField<FormValues>({ control });
+  const onSubmit = handleSubmit((data) => alert(JSON.stringify(data)));
+
+  return (
+    <form onSubmit={onSubmit}>
+      <TypedField as="input" name="test" rules={{ required: true }} />
+      <TypedField
+        as="input"
+        name={["nested", 0, "test"]}
+        rules={{ required: true }}
+      />
+      <input type="submit" />
+    </form>
+  );
+}
 ```
