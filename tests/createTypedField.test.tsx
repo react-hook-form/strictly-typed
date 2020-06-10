@@ -91,7 +91,7 @@ const reconfigureControl = (
 
 describe('createTypedField', () => {
   const control = reconfigureControl();
-  const TypedField = createTypedField<{
+  const { Controller } = createTypedField<{
     test: string;
     test1: { test2: string }[];
   }>({
@@ -99,7 +99,13 @@ describe('createTypedField', () => {
   });
 
   it('should render correctly when name is string', () => {
-    render(<TypedField name="test" as="input" defaultValue="" />);
+    render(
+      <Controller
+        name="test"
+        defaultValue=""
+        render={(props) => <input {...props} />}
+      />,
+    );
     expect(control.register).toHaveBeenCalledWith(
       {
         focus: undefined,
@@ -111,7 +117,11 @@ describe('createTypedField', () => {
 
   it('should render correctly when name is array', () => {
     render(
-      <TypedField name={['test1', 0, 'test2']} as="input" defaultValue="" />,
+      <Controller
+        name={['test1', 0, 'test2']}
+        defaultValue=""
+        render={(props) => <input {...props} />}
+      />,
     );
     expect(control.register).toHaveBeenCalledWith(
       {

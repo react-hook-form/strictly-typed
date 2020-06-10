@@ -1,7 +1,17 @@
 import React from 'react';
-import { Controller, Control } from 'react-hook-form';
+import {
+  useFormContext,
+  Controller as RHFController,
+  Control,
+} from 'react-hook-form';
 import { formatName } from './formatName';
-import { DeepPath, FieldValuesFromControl, Options, Props } from './types';
+import {
+  DeepPath,
+  FieldValuesFromControl,
+  Options,
+  FieldProps,
+  ControllerProps,
+} from './types';
 
 export const createTypedField = <
   TFieldValues extends FieldValuesFromControl<TControl>,
@@ -9,27 +19,41 @@ export const createTypedField = <
 >({
   control,
 }: Options<TControl>) => {
-  const TypedField = <
+  const Field = <
     TFieldName extends DeepPath<TFieldValues, TFieldName>,
-    TAs extends
-      | React.ReactElement
-      | React.ComponentType<any>
-      | keyof JSX.IntrinsicElements
+    TAs extends 'input' | 'select' | 'textarea' = 'input'
   >({
     name,
-    as,
+    as = 'input' as TAs,
+    rules,
     ...rest
-  }: Props<TFieldValues, TFieldName, TAs>) => {
+  }: FieldProps<TFieldValues, TFieldName, TAs>) => {
+    const formattedName = formatName(name as any);
+    const methods = useFormContext<TFieldValues>();
+    const { register } = control || methods;
+    return React.createElement(as, {
+      name: formattedName,
+      ref: rules ? register(rules as any) : register,
+      ...rest,
+    });
+  };
+
+  const Controller = <TFieldName extends DeepPath<TFieldValues, TFieldName>>({
+    name,
+    ...rest
+  }: ControllerProps<TFieldValues, TFieldName>) => {
     const formattedName = formatName(name as any);
     return (
-      <Controller
-        control={control}
+      <RHFController
         name={formattedName as any}
-        as={as as any}
+        control={control as any}
         {...rest}
       />
     );
   };
 
-  return TypedField;
+  return {
+    Field,
+    Controller,
+  };
 };

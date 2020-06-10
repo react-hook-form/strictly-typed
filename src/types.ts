@@ -142,35 +142,30 @@ export type ValidationRules<TFieldValue> = Partial<{
 
 export type Assign<T extends object, U extends object> = T & Omit<U, keyof T>;
 
-type AsProps<TAs> = TAs extends undefined
-  ? {}
-  : TAs extends React.ReactElement
-  ? Record<string, any>
-  : TAs extends React.ComponentType<infer P>
-  ? P
-  : TAs extends keyof JSX.IntrinsicElements
-  ? JSX.IntrinsicElements[TAs]
-  : never;
-
-export type Props<
+export type FieldProps<
   TFieldValues extends Record<string, any>,
   TFieldName extends DeepPath<TFieldValues, TFieldName>,
-  TAs extends
-    | React.ReactElement
-    | React.ComponentType<any>
-    | keyof JSX.IntrinsicElements
+  TAs extends 'input' | 'select' | 'textarea' = 'input'
 > = Assign<
   {
     name: TFieldName;
     as?: TAs;
     rules?: ValidationRules<DeepPathValue<TFieldValues, TFieldName>>;
-    onFocus?: () => void;
-    defaultValue?: DeepPathValue<TFieldValues, TFieldName>;
-    render?: (data: {
-      onChange: (...event: any[]) => void;
-      onBlur: () => void;
-      value: DeepPathValue<TFieldValues, TFieldName>;
-    }) => React.ReactElement;
   },
-  AsProps<TAs>
+  JSX.IntrinsicElements[TAs]
 >;
+
+export type ControllerProps<
+  TFieldValues extends Record<string, any>,
+  TFieldName extends DeepPath<TFieldValues, TFieldName>
+> = {
+  name: TFieldName;
+  rules?: ValidationRules<DeepPathValue<TFieldValues, TFieldName>>;
+  onFocus?: () => void;
+  defaultValue?: DeepPathValue<TFieldValues, TFieldName>;
+  render: (data: {
+    onChange: (...event: any[]) => void;
+    onBlur: () => void;
+    value: DeepPathValue<TFieldValues, TFieldName>;
+  }) => React.ReactElement;
+};
