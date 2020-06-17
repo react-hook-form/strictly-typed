@@ -76,9 +76,9 @@
     "typescript": "^3.8.3"
   },
   "peerDependencies": {
-    "react": ">=16",
-    "react-dom": ">=16",
-    "react-hook-form": ">=4"
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0",
+    "react-hook-form": ">=6.0.0"
   },
   "husky": {
     "hooks": {
