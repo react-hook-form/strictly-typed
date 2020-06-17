@@ -142,7 +142,7 @@ export type ValidationRules<TFieldValue> = Partial<{
 
 export type Assign<T extends object, U extends object> = T & Omit<U, keyof T>;
 
-export type FieldProps<
+export type UncontrollerProps<
   TFieldValues extends Record<string, any>,
   TFieldName extends DeepPath<TFieldValues, TFieldName>,
   TAs extends 'input' | 'select' | 'textarea' = 'input'

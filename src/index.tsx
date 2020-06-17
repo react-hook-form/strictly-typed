@@ -1,1 +1,1 @@
-export * from './createTypedField';
+export * from './useTypedField';

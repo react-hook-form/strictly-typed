@@ -1,7 +1,7 @@
 import React from 'react';
 import { Control } from 'react-hook-form';
 import { render } from '@testing-library/react';
-import { createTypedField } from '../src/createTypedField';
+import { useTypedField } from '../src/useTypedField';
 
 const reconfigureControl = (
   controlOverrides: Partial<Control> = {},
@@ -89,9 +89,9 @@ const reconfigureControl = (
   ...controlOverrides,
 });
 
-describe('createTypedField', () => {
+describe('useTypedField', () => {
   const control = reconfigureControl();
-  const { Controller } = createTypedField<{
+  const { Controller } = useTypedField<{
     test: string;
     test1: { test2: string }[];
   }>({

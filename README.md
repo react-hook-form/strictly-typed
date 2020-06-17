@@ -18,33 +18,54 @@ React Hook Form strictly typed Field component.
 
 ## Install
 
-    $ npm install @hookform/typed-field
-    
-## Quickstart    
+```
+$ npm install @hookform/typed-field
+```
+
+## Quickstart
 
 ```tsx
+import { TextField, Checkbox } from "@material-ui/core";
 import { useForm } from "react-hook-form";
-import { createTypedField } from "@hookform/typed-field";
+import { useTypedField } from "@hookform/typed-field";
 
 type FormValues = {
-  test: string;
+  uncontrolled: string;
+  controlled: string;
   nested: {
-    test: string;
-  }[];
+    uncontrolled: { test: string };
+    controlled: { test: boolean }[];
+  };
 };
 
 export default function App() {
   const { control, handleSubmit } = useForm<FormValues>();
-  const TypedField = createTypedField<FormValues>({ control });
+  const { Uncontroller, Controller } = useTypedField<FormValues>({ control });
+
   const onSubmit = handleSubmit((data) => alert(JSON.stringify(data)));
 
   return (
     <form onSubmit={onSubmit}>
-      <TypedField as="input" name="test" rules={{ required: true }} />
-      <TypedField
-        as="input"
-        name={["nested", 0, "test"]}
+      {/* Uncontrolled Component */}
+      <Uncontroller name="uncontrolled" defaultValue="default" />
+      <Uncontroller
+        name={["nested", "uncontrolled", "test"]}
+        as="textarea"
         rules={{ required: true }}
+      />
+      {/* Controlled Component */}
+      <Controller
+        name="controlled"
+        defaultValue=""
+        render={(props) => <TextField {...props} />}
+      />
+      <Controller
+        name={["nested", "controlled", 0, "test"]}
+        defaultValue={false}
+        rules={{
+          validate: (value) => value,
+        }}
+        render={(props) => <Checkbox {...props} />}
       />
       <input type="submit" />
     </form>
