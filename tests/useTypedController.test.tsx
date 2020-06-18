@@ -1,7 +1,8 @@
 import React from 'react';
 import { Control } from 'react-hook-form';
 import { render } from '@testing-library/react';
-import { useTypedController } from '../src/useTypedField';
+import { renderHook } from '@testing-library/react-hooks';
+import { useTypedController } from '../src/useTypedController';
 
 const reconfigureControl = (
   controlOverrides: Partial<Control> = {},
@@ -91,12 +92,15 @@ const reconfigureControl = (
 
 describe('useTypedField', () => {
   const control = reconfigureControl();
-  const TypedController = useTypedController<{
-    test: string;
-    test1: { test2: string }[];
-  }>({
-    control,
-  });
+  const { result } = renderHook(() =>
+    useTypedController<{
+      test: string;
+      test1: { test2: string }[];
+    }>({
+      control,
+    }),
+  );
+  const TypedController = result.current;
 
   it('should render correctly when name is string', () => {
     render(
