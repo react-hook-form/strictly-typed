@@ -11,7 +11,7 @@ export default [
   {
     input: 'src/index.tsx',
     output: {
-      name: 'TypedField',
+      name: 'ReactHookFormUseTypedController',
       file: pkg.unpkg,
       format: 'umd',
       sourcemap: true,

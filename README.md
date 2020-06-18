@@ -19,7 +19,7 @@ React Hook Form strictly typed Field component.
 ## Install
 
 ```
-$ npm install @hookform/typed-controller
+$ npm install @hookform/use-typed-controller
 ```
 
 ## Quickstart
@@ -27,7 +27,7 @@ $ npm install @hookform/typed-controller
 ```tsx
 import { TextField, Checkbox } from "@material-ui/core";
 import { useForm } from "react-hook-form";
-import { useTypedController } from "@hookform/typed-controller";
+import { useTypedController } from "@hookform/use-typed-controller";
 
 type FormValues = {
   uncontrolled: string;
