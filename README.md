@@ -47,10 +47,11 @@ export default function App() {
   return (
     <form onSubmit={onSubmit}>
       {/* Uncontrolled Component */}
-      <TypedController as="input" name="uncontrolled" defaultValue="default" />
+      <TypedController as="input" name="uncontrolled" defaultValue="" />
       <TypedController
         as="textarea"
         name={["nested", "uncontrolled", "test"]}
+        defaultValue=""
         rules={{ required: true }}
       />
       {/* Controlled Component */}
