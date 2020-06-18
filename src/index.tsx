@@ -1,1 +1,1 @@
-export * from './useTypedField';
+export * from './useTypedController';

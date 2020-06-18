@@ -1,7 +1,7 @@
 {
-  "name": "@hookform/typed-field",
+  "name": "@hookform/typed-controller",
   "version": "0.0.0-development",
-  "description": "React Hook Form strictly typed Field component.",
+  "description": "React Hook Form strictly typed Controller.",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "umd:main": "dist/index.umd.min.js",
@@ -33,14 +33,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/react-hook-form/typed-field.git"
+    "url": "git+https://github.com/react-hook-form/typed-controller.git"
   },
   "author": "Kotaro Sugawara <kotarella1110@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/react-hook-form/typed-field/issues"
+    "url": "https://github.com/react-hook-form/typed-controller/issues"
   },
-  "homepage": "https://github.com/react-hook-form/typed-field#readme",
+  "homepage": "https://github.com/react-hook-form/typed-controller#readme",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.1.0",
     "@rollup/plugin-json": "^4.0.3",
