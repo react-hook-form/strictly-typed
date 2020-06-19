@@ -87,6 +87,7 @@ const reconfigureControl = (
   },
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   renderWatchedInputs: () => {},
+  unmountFieldsStateRef: { current: {} },
   ...controlOverrides,
 });
 
