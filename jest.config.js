@@ -1,5 +1,5 @@
 module.exports = {
   preset: 'ts-jest',
   clearMocks: true,
-  testMatch: ['<rootDir>/tests/**/*.test.(ts|tsx)'],
+  testMatch: ['<rootDir>/src/**/*.test.(ts|tsx)'],
 };

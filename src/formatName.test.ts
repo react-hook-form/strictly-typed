@@ -1,4 +1,4 @@
-import { formatName } from '../src/formatName';
+import { formatName } from './formatName';
 
 describe('formatName', () => {
   it('should format correctly when name is string', () => {

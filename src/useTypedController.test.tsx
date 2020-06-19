@@ -2,7 +2,7 @@ import React from 'react';
 import { Control } from 'react-hook-form';
 import { render } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
-import { useTypedController } from '../src/useTypedController';
+import { useTypedController } from './useTypedController';
 
 const reconfigureControl = (
   controlOverrides: Partial<Control> = {},
