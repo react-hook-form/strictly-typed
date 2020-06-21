@@ -4,7 +4,7 @@ export type ArrayWithLength<N extends number> = { [K in N]: any };
 
 export interface DeepPathArray<TValues extends Record<string, any>, TPath>
   extends ReadonlyArray<string | number> {
-  ['0']?: keyof TValues;
+  ['0']: keyof TValues;
   ['1']?: TPath extends {
     ['0']: infer K0;
   }
