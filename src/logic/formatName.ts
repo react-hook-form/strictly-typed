@@ -1,4 +1,4 @@
-const isNumber = (value: unknown): value is number => typeof value === 'number';
+const isNumber = (value: unknown): value is number => typeof value === "number";
 
 export const formatName = (
   name: string | [string, ...(string | number)[]],
@@ -13,7 +13,7 @@ export const formatName = (
         }
         return [...accumulator, currentValue];
       }, [])
-      .join('.');
+      .join(".");
   }
   return name;
 };

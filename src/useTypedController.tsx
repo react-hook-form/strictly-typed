@@ -1,12 +1,12 @@
-import React from 'react';
-import { Controller, Control } from 'react-hook-form';
-import { formatName } from './formatName';
+import React from "react";
+import { Controller, Control } from "react-hook-form";
+import { formatName } from "./logic/formatName";
 import {
   DeepPath,
   FieldValuesFromControl,
   Options,
   ControllerProps,
-} from './types';
+} from "./types";
 
 export const useTypedController = <
   TFieldValues extends FieldValuesFromControl<TControl>,
@@ -17,7 +17,7 @@ export const useTypedController = <
   const TypedController = React.useCallback(
     <
       TFieldName extends DeepPath<TFieldValues, TFieldName>,
-      TAs extends 'input' | 'select' | 'textarea'
+      TAs extends "input" | "select" | "textarea"
     >({
       name,
       ...rest

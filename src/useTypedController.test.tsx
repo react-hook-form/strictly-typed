@@ -1,8 +1,8 @@
-import React from 'react';
-import { Control } from 'react-hook-form';
-import { render } from '@testing-library/react';
-import { renderHook } from '@testing-library/react-hooks';
-import { useTypedController } from './useTypedController';
+import React from "react";
+import { Control } from "react-hook-form";
+import { render } from "@testing-library/react";
+import { renderHook } from "@testing-library/react-hooks";
+import { useTypedController } from "./useTypedController";
 
 const reconfigureControl = (
   controlOverrides: Partial<Control> = {},
@@ -91,7 +91,7 @@ const reconfigureControl = (
   ...controlOverrides,
 });
 
-describe('useTypedField', () => {
+describe("useTypedField", () => {
   const control = reconfigureControl();
   const { result } = renderHook(() =>
     useTypedController<{
@@ -103,7 +103,7 @@ describe('useTypedField', () => {
   );
   const TypedController = result.current;
 
-  it('should render correctly when name is string', () => {
+  it("should render correctly when name is string", () => {
     render(
       <TypedController
         name="test"
@@ -114,16 +114,16 @@ describe('useTypedField', () => {
     expect(control.register).toHaveBeenCalledWith(
       {
         focus: undefined,
-        name: 'test',
+        name: "test",
       },
       undefined,
     );
   });
 
-  it('should render correctly when name is array', () => {
+  it("should render correctly when name is array", () => {
     render(
       <TypedController
-        name={['test1', 0, 'test2'] as const}
+        name={["test1", 0, "test2"] as const}
         defaultValue=""
         render={(props) => <input {...props} />}
       />,
@@ -131,7 +131,7 @@ describe('useTypedField', () => {
     expect(control.register).toHaveBeenCalledWith(
       {
         focus: undefined,
-        name: 'test1[0].test2',
+        name: "test1[0].test2",
       },
       undefined,
     );

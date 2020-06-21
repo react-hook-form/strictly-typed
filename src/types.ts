@@ -1,19 +1,19 @@
-import { Control } from 'react-hook-form';
+import { Control } from "react-hook-form";
 
 export type ArrayWithLength<N extends number> = { [K in N]: any };
 
 export interface DeepPathArray<T, P> extends ReadonlyArray<string | number> {
-  ['0']?: keyof T;
-  ['1']?: P extends {
-    ['0']: infer K0;
+  ["0"]?: keyof T;
+  ["1"]?: P extends {
+    ["0"]: infer K0;
   }
     ? K0 extends keyof T
       ? keyof T[K0]
       : never
     : never;
-  ['2']?: P extends {
-    ['0']: infer K0;
-    ['1']: infer K1;
+  ["2"]?: P extends {
+    ["0"]: infer K0;
+    ["1"]: infer K1;
   }
     ? K0 extends keyof T
       ? K1 extends keyof T[K0]
@@ -21,10 +21,10 @@ export interface DeepPathArray<T, P> extends ReadonlyArray<string | number> {
         : never
       : never
     : never;
-  ['3']?: P extends {
-    ['0']: infer K0;
-    ['1']: infer K1;
-    ['2']: infer K2;
+  ["3"]?: P extends {
+    ["0"]: infer K0;
+    ["1"]: infer K1;
+    ["2"]: infer K2;
   }
     ? K0 extends keyof T
       ? K1 extends keyof T[K0]
@@ -34,11 +34,11 @@ export interface DeepPathArray<T, P> extends ReadonlyArray<string | number> {
         : never
       : never
     : never;
-  ['4']?: P extends {
-    ['0']: infer K0;
-    ['1']: infer K1;
-    ['2']: infer K2;
-    ['3']: infer K3;
+  ["4"]?: P extends {
+    ["0"]: infer K0;
+    ["1"]: infer K1;
+    ["2"]: infer K2;
+    ["3"]: infer K3;
   }
     ? K0 extends keyof T
       ? K1 extends keyof T[K0]
@@ -50,12 +50,12 @@ export interface DeepPathArray<T, P> extends ReadonlyArray<string | number> {
         : never
       : never
     : never;
-  ['5']?: P extends {
-    ['0']: infer K0;
-    ['1']: infer K1;
-    ['2']: infer K2;
-    ['3']: infer K3;
-    ['4']: infer K4;
+  ["5"]?: P extends {
+    ["0"]: infer K0;
+    ["1"]: infer K1;
+    ["2"]: infer K2;
+    ["3"]: infer K3;
+    ["4"]: infer K4;
   }
     ? K0 extends keyof T
       ? K1 extends keyof T[K0]
@@ -145,7 +145,7 @@ export type Assign<T extends object, U extends object> = T & Omit<U, keyof T>;
 export type ControllerProps<
   TFieldValues extends Record<string, any>,
   TFieldName extends DeepPath<TFieldValues, TFieldName>,
-  TAs extends 'input' | 'select' | 'textarea'
+  TAs extends "input" | "select" | "textarea"
 > = Assign<
   {
     name: TFieldName;

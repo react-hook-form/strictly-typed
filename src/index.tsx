@@ -1,1 +1,1 @@
-export * from './useTypedController';
+export * from "./useTypedController";
