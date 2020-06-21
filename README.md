@@ -67,7 +67,7 @@ export default function App() {
         name={["nested", "controlled", 0, "test"]}
         defaultValue={false}
         rules={{
-          validate: (value) => value,
+          validate: (value) => value, // (parameter) value: boolean
         }}
         render={(props) => <Checkbox {...props} />}
       />
