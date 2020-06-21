@@ -1,6 +1,6 @@
 import React from 'react';
 import { Controller, Control } from 'react-hook-form';
-import { formatName } from './formatName';
+import { formatName } from './logic/formatName';
 import {
   DeepPath,
   FieldValuesFromControl,
