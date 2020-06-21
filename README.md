@@ -14,7 +14,7 @@
 
 ## Goal
 
-React Hook Form strictly typed Field component.
+React Hook Form strictly typed Controller.
 
 ## Install
 
