@@ -123,7 +123,7 @@ describe('useTypedField', () => {
   it('should render correctly when name is array', () => {
     render(
       <TypedController
-        name={['test1', 0, 'test2'] as const}
+        name={['test1', 0, 'test2']}
         defaultValue=""
         render={(props) => <input {...props} />}
       />,

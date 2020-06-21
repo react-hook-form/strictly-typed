@@ -25,9 +25,9 @@ $ npm install @hookform/use-typed-controller
 ## Quickstart
 
 ```tsx
-import { TextField, Checkbox } from "@material-ui/core";
-import { useForm } from "react-hook-form";
 import { useTypedController } from "@hookform/use-typed-controller";
+import { useForm } from "react-hook-form";
+import { TextField, Checkbox } from "@material-ui/core";
 
 type FormValues = {
   uncontrolled: string;
@@ -50,7 +50,7 @@ export default function App() {
       <TypedController as="input" name="uncontrolled" defaultValue="" />
       <TypedController
         as="textarea"
-        name={["nested", "uncontrolled", "test"] as const}
+        name={["nested", "uncontrolled", "test"]}
         defaultValue=""
         rules={{ required: true }}
       />
@@ -61,7 +61,7 @@ export default function App() {
         render={(props) => <TextField {...props} />}
       />
       <TypedController
-        name={["nested", "controlled", 0, "test"] as const}
+        name={["nested", "controlled", 0, "test"]}
         defaultValue={false}
         rules={{
           validate: (value) => value,

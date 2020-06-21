@@ -16,12 +16,13 @@ export const useTypedController = <
 }: Options<TControl>) => {
   const TypedController = React.useCallback(
     <
-      TFieldName extends DeepPath<TFieldValues, TFieldName>,
+      UFieldValues extends TFieldValues,
+      TFieldName extends DeepPath<UFieldValues, TFieldName>,
       TAs extends 'input' | 'select' | 'textarea'
     >({
       name,
       ...rest
-    }: ControllerProps<TFieldValues, TFieldName, TAs>) => {
+    }: ControllerProps<UFieldValues, TFieldName, TAs>) => {
       const formattedName = formatName(name as any);
       return (
         <Controller name={formattedName as any} control={control} {...rest} />
