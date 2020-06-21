@@ -45,24 +45,25 @@ export default function App() {
   const { control, handleSubmit } = useForm<FormValues>();
   const TypedController = useTypedController<FormValues>({ control });
 
-  const onSubmit = handleSubmit((data) => alert(JSON.stringify(data)));
+  const onSubmit = handleSubmit((data) => console.log(data);
 
   return (
     <form onSubmit={onSubmit}>
       {/* Uncontrolled Component */}
-      <TypedController as="input" name="uncontrolled" defaultValue="" />
       <TypedController
         as="textarea"
         name={["nested", "uncontrolled", "test"]}
         defaultValue=""
         rules={{ required: true }}
       />
+      
       {/* Controlled Component */}
       <TypedController
         name="controlled"
         defaultValue=""
         render={(props) => <TextField {...props} />}
       />
+      
       <TypedController
         name={["nested", "controlled", 0, "test"]}
         defaultValue={false}
@@ -71,6 +72,7 @@ export default function App() {
         }}
         render={(props) => <Checkbox {...props} />}
       />
+      
       {/* Type Error */}
       <TypedController
         as="input"
@@ -87,6 +89,7 @@ export default function App() {
         name="error"
         defaultValue={true} // ❌: Type 'true' is not assignable to type 'string | undefined'.
       />
+      
       <input type="submit" />
     </form>
   );
