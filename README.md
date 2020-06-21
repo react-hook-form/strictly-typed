@@ -50,7 +50,7 @@ export default function App() {
       <TypedController as="input" name="uncontrolled" defaultValue="" />
       <TypedController
         as="textarea"
-        name={["nested", "uncontrolled", "test"] as const}
+        name={"nested.uncontrolled.test" as const}
         defaultValue=""
         rules={{ required: true }}
       />
@@ -61,7 +61,7 @@ export default function App() {
         render={(props) => <TextField {...props} />}
       />
       <TypedController
-        name={["nested", "controlled", 0, "test"] as const}
+        name={"nested.controlled[0].test" as const}
         defaultValue={false}
         rules={{
           validate: (value) => value,
