@@ -112,7 +112,7 @@ export type Options<TControl extends Control> = {
   control?: TControl;
 };
 
-export type Message = string | React.ReactElement;
+export type Message = string;
 
 export type ValidationValue = boolean | number | string | RegExp;
 
@@ -157,7 +157,7 @@ export type ControllerProps<
     rules?: ValidationRules<DeepPathValue<TFieldValues, TFieldName>>;
     onFocus?: () => void;
     defaultValue?: DeepPathValue<TFieldValues, TFieldName>;
-    render?: (data: {
+    render?: (props: {
       onChange: (...event: any[]) => void;
       onBlur: () => void;
       value: DeepPathValue<TFieldValues, TFieldName>;
