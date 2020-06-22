@@ -93,6 +93,20 @@ export default function App() {
 
 [![Edit React Hook Form - useTypedController](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-hook-form-usetypedcontroller-23qv1?fontsize=14&hidenavigation=1&theme=dark)
 
+## Field Names
+
+| Field Path          | Field Name   |
+| :------------------ | :----------- |
+| `foo`               | `foo`        |
+| `['foo', 'bar']`    | `foo.bar`    |
+| `['foo', 0]`        | `foo[0]`     |
+| `['foo', '0']`      | `foo.0`      |
+| `['foo', 1]`        | `foo[1]`     |
+| `['foo', 0, 'bar']` | `foo[0].bar` |
+| `['foo']`           | `foo`        |
+| `['foo', 'bar']`    | `foo.bar`    |
+| `['foo', 'bar', 0]` | `foo.bar[0]` |
+
 ## Backers
 
 Thanks goes to all our backers! [[Become a backer](https://opencollective.com/react-hook-form#backer)].
