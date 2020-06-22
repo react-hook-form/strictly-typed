@@ -93,7 +93,7 @@ export default function App() {
 
 [![Edit React Hook Form - useTypedController](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-hook-form-usetypedcontroller-23qv1?fontsize=14&hidenavigation=1&theme=dark)
 
-## Field Name Reference
+## Controller Name Reference
 
 | Field Path          | Field Name   |
 | :------------------ | :----------- |
