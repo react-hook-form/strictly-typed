@@ -71,8 +71,6 @@ export default function App() {
         render={(props) => <Checkbox {...props} />}
       />
       
-      {/* Type Error */}
-      
       {/* ❌: Type '"notExists"' is not assignable to type 'DeepPath<FormValues, "notExists">'. */}
       <TypedController
         as="input"
