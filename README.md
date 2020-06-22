@@ -25,15 +25,15 @@ $ npm install @hookform/use-typed-controller
 ## Quickstart
 
 ```tsx
-import { useTypedController } from "@hookform/use-typed-controller";
-import { useForm } from "react-hook-form";
-import { TextField, Checkbox } from "@material-ui/core";
+import { useTypedController } from '@hookform/use-typed-controller';
+import { useForm } from 'react-hook-form';
+import { TextField, Checkbox } from '@material-ui/core';
 
 type FormValues = {
-  flatType: string;
+  flat: string;
   nested: {
-    objectType: { test: string };
-    arrayType: { test: boolean }[];
+    object: { test: string };
+    array: { test: boolean }[];
   };
 };
 
@@ -41,7 +41,7 @@ export default function App() {
   const { control, handleSubmit } = useForm<FormValues>();
   const TypedController = useTypedController<FormValues>({ control });
 
-  const onSubmit = handleSubmit((data) => console.log(data);
+  const onSubmit = handleSubmit((data) => console.log(data));
 
   return (
     <form onSubmit={onSubmit}>
@@ -53,37 +53,29 @@ export default function App() {
 
       <TypedController
         as="textarea"
-        name={["nested", "objectType", "test"]}
+        name={['nested', 'object', 'test']}
         defaultValue=""
         rules={{ required: true }}
       />
 
       <TypedController
-        name={["nested", "arrayType", 0, "test"]}
+        name={['nested', 'array', 0, 'test']}
         defaultValue={false}
         render={(props) => <Checkbox {...props} />}
       />
 
       {/* ❌: Type '"notExists"' is not assignable to type 'DeepPath<FormValues, "notExists">'. */}
-      <TypedController
-        as="input"
-        name="notExists"
-        defaultValue=""
-      />
+      <TypedController as="input" name="notExists" defaultValue="" />
 
-      {/* ❌: Type '(string | number)[]' is not assignable to type 'DeepPath<FormValues, ["nested", "objectType", 0, "notExists"]>'. */}
+      {/* ❌: Type 'number' is not assignable to type 'string | undefined'. */}
       <TypedController
         as="input"
-        name={["nested", "objectType", 0, "notExists"]}
+        name={['nested', 'object', 0, 'notExists']}
         defaultValue=""
       />
 
       {/* ❌: Type 'true' is not assignable to type 'string | undefined'. */}
-      <TypedController
-        as="input"
-        name="flatType"
-        defaultValue={true}
-      />
+      <TypedController as="input" name="flat" defaultValue={true} />
 
       <input type="submit" />
     </form>
