@@ -24,8 +24,6 @@ $ npm install @hookform/use-typed-controller
 
 ## Quickstart
 
-[![Edit React Hook Form - useTypedController](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-hook-form-usetypedcontroller-23qv1?fontsize=14&hidenavigation=1&theme=dark)
-
 ```tsx
 import { useTypedController } from "@hookform/use-typed-controller";
 import { useForm } from "react-hook-form";
@@ -95,6 +93,8 @@ export default function App() {
   );
 }
 ```
+
+[![Edit React Hook Form - useTypedController](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-hook-form-usetypedcontroller-23qv1?fontsize=14&hidenavigation=1&theme=dark)
 
 ## Backers
 
