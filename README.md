@@ -72,20 +72,26 @@ export default function App() {
       />
       
       {/* Type Error */}
+      
+      {/* ❌: Type '"notExists"' is not assignable to type 'DeepPath<FormValues, "notExists">'. */}
       <TypedController
         as="input"
-        name="notExists" // ❌: Type '"notExists"' is not assignable to type 'DeepPath<FormValues, "notExists">'.
+        name="notExists" 
         defaultValue=""
       />
+      
+      {/* ❌: Type '(string | number)[]' is not assignable to type 'DeepPath<FormValues, ["nested", "controlled", 0, "notExists"]>'. */}
       <TypedController
         as="input"
-        name={["nested", "controlled", 0, "notExists"]} // ❌: Type '(string | number)[]' is not assignable to type 'DeepPath<FormValues, ["nested", "controlled", 0, "notExists"]>'.
+        name={["nested", "controlled", 0, "notExists"]}
         defaultValue=""
       />
+      
+      {/* ❌: Type 'true' is not assignable to type 'string | undefined'. */}
       <TypedController
         as="input"
         name="error"
-        defaultValue={true} // ❌: Type 'true' is not assignable to type 'string | undefined'.
+        defaultValue={true}
       />
       
       <input type="submit" />
