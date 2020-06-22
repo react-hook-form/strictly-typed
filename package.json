@@ -78,7 +78,8 @@
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0",
-    "react-hook-form": ">=6.0.0"
+    "react-hook-form": ">=6.0.0",
+    "typescript": ">=3.0.1"
   },
   "husky": {
     "hooks": {
