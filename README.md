@@ -30,13 +30,11 @@ import { useForm } from "react-hook-form";
 import { TextField, Checkbox } from "@material-ui/core";
 
 type FormValues = {
-  uncontrolled: string;
-  controlled: string;
+  flatType: string;
   nested: {
-    uncontrolled: { test: string };
-    controlled: { test: boolean }[];
+    objectType: { test: string };
+    arrayType: { test: boolean }[];
   };
-  error: string;
 };
 
 export default function App() {
@@ -47,51 +45,46 @@ export default function App() {
 
   return (
     <form onSubmit={onSubmit}>
-      {/* Uncontrolled Component */}
       <TypedController
-        as="textarea"
-        name={["nested", "uncontrolled", "test"]}
-        defaultValue=""
-        rules={{ required: true }}
-      />
-      
-      {/* Controlled Component */}
-      <TypedController
-        name="controlled"
+        name="flat"
         defaultValue=""
         render={(props) => <TextField {...props} />}
       />
-      
+
       <TypedController
-        name={["nested", "controlled", 0, "test"]}
+        as="textarea"
+        name={["nested", "objectType", "test"]}
+        defaultValue=""
+        rules={{ required: true }}
+      />
+
+      <TypedController
+        name={["nested", "arrayType", 0, "test"]}
         defaultValue={false}
-        rules={{
-          validate: (value) => value, // (parameter) value: boolean
-        }}
         render={(props) => <Checkbox {...props} />}
       />
-      
+
       {/* ❌: Type '"notExists"' is not assignable to type 'DeepPath<FormValues, "notExists">'. */}
       <TypedController
         as="input"
-        name="notExists" 
+        name="notExists"
         defaultValue=""
       />
-      
-      {/* ❌: Type '(string | number)[]' is not assignable to type 'DeepPath<FormValues, ["nested", "controlled", 0, "notExists"]>'. */}
+
+      {/* ❌: Type '(string | number)[]' is not assignable to type 'DeepPath<FormValues, ["nested", "objectType", 0, "notExists"]>'. */}
       <TypedController
         as="input"
-        name={["nested", "controlled", 0, "notExists"]}
+        name={["nested", "objectType", 0, "notExists"]}
         defaultValue=""
       />
-      
+
       {/* ❌: Type 'true' is not assignable to type 'string | undefined'. */}
       <TypedController
         as="input"
-        name="error"
+        name="flatType"
         defaultValue={true}
       />
-      
+
       <input type="submit" />
     </form>
   );
