@@ -18,7 +18,7 @@
 
 ## Goal
 
-React Hook Form strictly typed Controller.
+React Hook Form strictly typed custom hooks.
 
 ## Install
 
@@ -89,7 +89,7 @@ export default function App() {
 
 [![Edit React Hook Form - useTypedController](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-hook-form-usetypedcontroller-23qv1?fontsize=14&hidenavigation=1&theme=dark)
 
-## Controller Name Reference
+## Name Reference
 
 | Field Path          | Field Name   |
 | :------------------ | :----------- |
