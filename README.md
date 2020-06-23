@@ -14,7 +14,7 @@
 
 ## Goal
 
-React Hook Form strictly typed Controller.
+React Hook Form strictly typed custom hooks.
 
 ## Install
 
