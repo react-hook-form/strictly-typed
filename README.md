@@ -99,6 +99,27 @@ export default function App() {
 | `['foo', 'bar']`    | `foo.bar`    |
 | `['foo', 'bar', 0]` | `foo.bar[0]` |
 
+## API
+
+- useTypedController
+
+| Name      | Type     | Required |
+| :-------- | :------- | :------- |
+| `control` | `Object` |          |
+
+---
+
+- TypedController
+
+| Name           | Type                                        | Required |
+| :------------- | :------------------------------------------ | :------- |
+| `name`         | `string | [string, ...(string | number)[]]` | ✓        |
+| `as`           | `'input' | 'select' | 'textarea'`           |          |
+| `render`       | `Function`                                  |          |
+| `defaultValue` | `DeepPathValue`                             |          |
+| `rules`        | `Object`                                    |          |
+| `onFocus`      | `() => void`                                |          |
+
 ## Backers
 
 Thanks goes to all our backers! [[Become a backer](https://opencollective.com/react-hook-form#backer)].
