@@ -111,8 +111,6 @@ export default function App() {
 | :-------- | :------- | :------- |
 | `control` | `Object` |          |
 
----
-
 - TypedController
 
 | Name           | Type                                          | Required |
