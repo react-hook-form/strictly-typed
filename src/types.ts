@@ -1,4 +1,4 @@
-import { Control } from 'react-hook-form';
+import { NestedValue, Control } from 'react-hook-form';
 
 export type ArrayWithLength<N extends number> = { [K in N]: any };
 
@@ -103,6 +103,14 @@ export type DeepPathValue<
   : TPath extends keyof TValues
   ? TValues[TPath]
   : any;
+
+export type NonUndefined<T> = T extends undefined ? never : T;
+
+export type UnpackNestedValue<T> = NonUndefined<T> extends NestedValue<infer U>
+  ? U
+  : NonUndefined<T> extends object
+  ? { [K in keyof T]: UnpackNestedValue<T[K]> }
+  : T;
 
 export type FieldValuesFromControl<
   TControl extends Control

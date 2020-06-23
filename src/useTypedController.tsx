@@ -3,13 +3,14 @@ import { Controller, Control } from 'react-hook-form';
 import { formatName } from './logic/formatName';
 import {
   DeepPath,
+  UnpackNestedValue,
   FieldValuesFromControl,
   Options,
   ControllerProps,
 } from './types';
 
 export const useTypedController = <
-  TFieldValues extends FieldValuesFromControl<TControl>,
+  TFieldValues extends UnpackNestedValue<FieldValuesFromControl<TControl>>,
   TControl extends Control = Control
 >({
   control,
