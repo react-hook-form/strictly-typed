@@ -6272,7 +6272,7 @@ react-dom@^16.13.1:
     prop-types "^15.6.2"
     scheduler "^0.19.1"
 
-react-hook-form@^6.0.0-rc.4:
+react-hook-form@^6.0.0-rc.5:
   version "6.0.0-rc.5"
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.0.0-rc.5.tgz#f3965f66a3160fa37fcd44a88c54d8d7c65106d0"
   integrity sha512-u+9po9D2gV6LjzCAdLsIHghG2mpE3+g49HZMWEl222NKqZ50b9g76f0rmw9jkBwRnS3cqxWcrmqlBD6YptPw5g==
