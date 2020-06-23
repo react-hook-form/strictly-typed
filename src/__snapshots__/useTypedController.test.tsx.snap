@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useTypedField should render correctly when as is input and name is string 1`] = `
+<DocumentFragment>
+  <input
+    value="test"
+  />
+</DocumentFragment>
+`;
+
+exports[`useTypedField should render correctly when as is textarea and name is array 1`] = `
+<DocumentFragment>
+  <textarea>
+    test
+  </textarea>
+</DocumentFragment>
+`;
+
+exports[`useTypedField should render correctly when name is array and render is input 1`] = `
+<DocumentFragment>
+  <input
+    value="test"
+  />
+</DocumentFragment>
+`;
+
+exports[`useTypedField should render correctly when name is string and render is textarea 1`] = `
+<DocumentFragment>
+  <textarea>
+    test
+  </textarea>
+</DocumentFragment>
+`;

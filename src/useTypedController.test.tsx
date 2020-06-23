@@ -90,47 +90,164 @@ const reconfigureControl = (
   ...controlOverrides,
 });
 
+type FormValues = {
+  flat: string;
+  nested: {
+    object: { test: string };
+    array: { test: string }[];
+  };
+};
+
 describe('useTypedField', () => {
-  const control = reconfigureControl();
-  const { result } = renderHook(() =>
-    useTypedController<{
-      test: string;
-      test1: { test2: string }[];
-    }>({
-      control,
-    }),
-  );
-  const TypedController = result.current;
+  it('should render correctly when as is input and name is string', () => {
+    const control = reconfigureControl();
+    const { result } = renderHook(() =>
+      useTypedController<FormValues>({
+        control,
+      }),
+    );
+    const TypedController = result.current;
+
+    const { asFragment } = render(
+      <TypedController as="input" name="flat" defaultValue="test" />,
+    );
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('should render correctly when name is string and render is textarea', () => {
+    const control = reconfigureControl();
+    const { result } = renderHook(() =>
+      useTypedController<FormValues>({
+        control,
+      }),
+    );
+    const TypedController = result.current;
+
+    const { asFragment } = render(
+      <TypedController
+        name="flat"
+        defaultValue="test"
+        render={(props) => <textarea {...props} />}
+      />,
+    );
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('should render correctly when as is textarea and name is array', () => {
+    const control = reconfigureControl();
+    const { result } = renderHook(() =>
+      useTypedController<FormValues>({
+        control,
+      }),
+    );
+    const TypedController = result.current;
+
+    const { asFragment } = render(
+      <TypedController
+        as="textarea"
+        name={['nested', 'object', 'test']}
+        defaultValue="test"
+      />,
+    );
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('should render correctly when name is array and render is input', () => {
+    const control = reconfigureControl();
+    const { result } = renderHook(() =>
+      useTypedController<FormValues>({
+        control,
+      }),
+    );
+    const TypedController = result.current;
+
+    const { asFragment } = render(
+      <TypedController
+        name={['nested', 'array', 0, 'test']}
+        defaultValue="test"
+        render={(props) => <input {...props} />}
+      />,
+    );
+
+    expect(asFragment()).toMatchSnapshot();
+  });
 
   it('should render correctly when name is string', () => {
+    const control = reconfigureControl();
+    const { result } = renderHook(() =>
+      useTypedController<FormValues>({
+        control,
+      }),
+    );
+    const TypedController = result.current;
+
     render(
       <TypedController
-        name="test"
+        name="flat"
         defaultValue=""
         render={(props) => <input {...props} />}
       />,
     );
+
     expect(control.register).toHaveBeenCalledWith(
       {
         focus: undefined,
-        name: 'test',
+        name: 'flat',
       },
       undefined,
     );
   });
 
-  it('should render correctly when name is array', () => {
+  it('should format name correctly when name is array (dot syntax)', () => {
+    const control = reconfigureControl();
+    const { result } = renderHook(() =>
+      useTypedController<FormValues>({
+        control,
+      }),
+    );
+    const TypedController = result.current;
+
     render(
       <TypedController
-        name={['test1', 0, 'test2']}
+        name={['nested', 'object', 'test']}
         defaultValue=""
         render={(props) => <input {...props} />}
       />,
     );
+
     expect(control.register).toHaveBeenCalledWith(
       {
         focus: undefined,
-        name: 'test1[0].test2',
+        name: 'nested.object.test',
+      },
+      undefined,
+    );
+  });
+
+  it('should format name correctly when name is array (dot-bracket syntax)', () => {
+    const control = reconfigureControl();
+    const { result } = renderHook(() =>
+      useTypedController<FormValues>({
+        control,
+      }),
+    );
+    const TypedController = result.current;
+
+    render(
+      <TypedController
+        name={['nested', 'array', 0, 'test']}
+        defaultValue=""
+        render={(props) => <input {...props} />}
+      />,
+    );
+
+    expect(control.register).toHaveBeenCalledWith(
+      {
+        focus: undefined,
+        name: 'nested.array[0].test',
       },
       undefined,
     );
