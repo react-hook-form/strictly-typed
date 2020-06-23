@@ -1,8 +1,4 @@
 <div align="center">
-  <h2>👷🏻‍♂️ under construction</h2>
-</div>
-
-<div align="center">
     <p align="center">
         <a href="https://react-hook-form.com" title="React Hook Form - Simple React forms validation">
             <img src="https://raw.githubusercontent.com/bluebill1049/react-hook-form/master/website/logo.png" alt="React Hook Form Logo - React hook custom hook for form validation" width="300px" />
@@ -12,6 +8,14 @@
 
 <p align="center">Performant, flexible and extensible forms with easy to use validation.</p>
 
+<div align="center">
+
+[![npm downloads](https://img.shields.io/npm/dm/@hookform/strictly-typed.svg?style=for-the-badge)](https://www.npmjs.com/package/@hookform/strictly-typed)
+[![npm](https://img.shields.io/npm/dt/@hookform/strictly-typed.svg?style=for-the-badge)](https://www.npmjs.com/package/@hookform/strictly-typed)
+[![npm](https://img.shields.io/bundlephobia/minzip/@hookform/strictly-typed?style=for-the-badge)](https://bundlephobia.com/result?p=@hookform/strictly-typed)
+
+</div>
+
 ## Goal
 
 React Hook Form strictly typed Controller.
@@ -19,13 +23,13 @@ React Hook Form strictly typed Controller.
 ## Install
 
 ```
-$ npm install @hookform/use-typed-controller
+$ npm install @hookform/strictly-typed
 ```
 
 ## Quickstart
 
 ```tsx
-import { useTypedController } from '@hookform/use-typed-controller';
+import { useTypedController } from '@hookform/strictly-typed';
 import { useForm } from 'react-hook-form';
 import { TextField, Checkbox } from '@material-ui/core';
 

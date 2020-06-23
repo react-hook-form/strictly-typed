@@ -1,5 +1,5 @@
 {
-  "name": "@hookform/use-typed-controller",
+  "name": "@hookform/strictly-typed",
   "version": "0.0.0-development",
   "description": "React Hook Form strictly typed Controller.",
   "main": "dist/index.js",
@@ -44,12 +44,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/react-hook-form/use-typed-controller.git"
+    "url": "git+https://github.com/react-hook-form/strictly-typed.git"
   },
   "author": "Kotaro Sugawara <kotarella1110@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/react-hook-form/use-typed-controller/issues"
+    "url": "https://github.com/react-hook-form/strictly-typed/issues"
   },
   "homepage": "https://react-hook-form.com",
   "devDependencies": {
