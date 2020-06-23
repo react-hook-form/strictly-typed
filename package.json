@@ -30,8 +30,17 @@
   },
   "keywords": [
     "react",
+    "react-component",
     "hooks",
-    "react-hooks"
+    "react-hooks",
+    "form",
+    "forms",
+    "form-validation",
+    "validation",
+    "hookform",
+    "react-hook-form",
+    "typescript",
+    "typesafe"
   ],
   "repository": {
     "type": "git",
