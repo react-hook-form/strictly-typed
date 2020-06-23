@@ -1,7 +1,7 @@
 {
   "name": "@hookform/strictly-typed",
   "version": "0.0.0-development",
-  "description": "React Hook Form strictly typed Controller.",
+  "description": "React Hook Form strictly typed custom hooks.",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "umd:main": "dist/index.umd.min.js",
