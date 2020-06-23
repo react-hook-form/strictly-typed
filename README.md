@@ -19,13 +19,13 @@ React Hook Form strictly typed Controller.
 ## Install
 
 ```
-$ npm install @hookform/use-typed-controller
+$ npm install @hookform/strictly-typed
 ```
 
 ## Quickstart
 
 ```tsx
-import { useTypedController } from '@hookform/use-typed-controller';
+import { useTypedController } from '@hookform/strictly-typed';
 import { useForm } from 'react-hook-form';
 import { TextField, Checkbox } from '@material-ui/core';
 
@@ -85,7 +85,7 @@ export default function App() {
 
 [![Edit React Hook Form - useTypedController](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-hook-form-usetypedcontroller-23qv1?fontsize=14&hidenavigation=1&theme=dark)
 
-## Controller Name Reference
+## Name Reference
 
 | Field Path          | Field Name   |
 | :------------------ | :----------- |
