@@ -111,14 +111,14 @@ export default function App() {
 
 - TypedController
 
-| Name           | Type                                        | Required |
-| :------------- | :------------------------------------------ | :------- |
-| `name`         | `string | [string, ...(string | number)[]]` | ✓        |
-| `as`           | `'input' | 'select' | 'textarea'`           |          |
-| `render`       | `Function`                                  |          |
-| `defaultValue` | `DeepPathValue`                             |          |
-| `rules`        | `Object`                                    |          |
-| `onFocus`      | `() => void`                                |          |
+| Name           | Type                                          | Required |
+| :------------- | :-------------------------------------------- | :------- |
+| `name`         | `string \| [string, ...(string \| number)[]]` | ✓        |
+| `as`           | `'input' \| 'select' \| 'textarea'`           |          |
+| `render`       | `Function`                                    |          |
+| `defaultValue` | `DeepPathValue`                               |          |
+| `rules`        | `Object`                                      |          |
+| `onFocus`      | `() => void`                                  |          |
 
 ## Backers
 
