@@ -1,61 +1,28 @@
-import external from 'rollup-plugin-peer-deps-external';
-import json from '@rollup/plugin-json';
-import typescript from 'rollup-plugin-typescript2';
-import commonjs from '@rollup/plugin-commonjs';
-import resolve from '@rollup/plugin-node-resolve';
-import sourcemaps from 'rollup-plugin-sourcemaps';
-import { terser } from 'rollup-plugin-terser';
+import { createRollupConfig } from './rollup/createRollupConfig';
 import pkg from './package.json';
 
-export default [
+const options = [
   {
-    input: 'src/index.tsx',
-    output: {
-      name: 'ReactHookFormStrictlyTyped',
-      file: pkg.unpkg,
-      format: 'umd',
-      sourcemap: true,
-      globals: {
-        react: 'React',
-        'react-dom': 'ReactDOM',
-        'react-hook-form': 'ReactHookForm',
-      },
-    },
-    plugins: [
-      external(),
-      json(),
-      typescript({
-        clean: true,
-      }),
-      commonjs(),
-      resolve(),
-      sourcemaps(),
-      terser(),
-    ],
+    format: 'cjs',
+    env: 'development',
+    input: pkg.source,
   },
   {
-    input: 'src/index.tsx',
-    output: [
-      {
-        file: pkg.main,
-        format: 'cjs',
-        sourcemap: true,
-      },
-      {
-        file: pkg.module,
-        format: 'es',
-        sourcemap: true,
-      },
-    ],
-    plugins: [
-      external(),
-      json(),
-      typescript({
-        clean: true,
-      }),
-      commonjs(),
-      resolve(),
-      sourcemaps(),
-    ],
+    format: 'cjs',
+    env: 'production',
+    input: pkg.source,
+  },
+  { format: 'esm', input: pkg.source },
+  {
+    format: 'umd',
+    env: 'development',
+    input: pkg.source,
+  },
+  {
+    format: 'umd',
+    env: 'production',
+    input: pkg.source,
   },
 ];
+
+export default options.map((option) => createRollupConfig(option));

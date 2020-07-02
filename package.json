@@ -4,10 +4,11 @@
   "description": "React Hook Form strictly typed custom hooks.",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
-  "umd:main": "dist/index.umd.min.js",
-  "unpkg": "dist/index.umd.min.js",
-  "jsdelivr": "dist/index.umd.min.js",
-  "jsnext:main": "index.esm.js",
+  "umd:main": "dist/index.umd.production.min.js",
+  "unpkg": "dist/index.umd.production.min.js",
+  "jsdelivr": "dist/index.umd.production.min.js",
+  "jsnext:main": "dist/index.esm.js",
+  "source": "src/index.tsx",
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "files": [
@@ -17,7 +18,8 @@
     "access": "public"
   },
   "scripts": {
-    "build": "npm run clean && rollup -c",
+    "prebuild": "npm run clean",
+    "build": "node rollup/writeCjsEntryFile.js && rollup -c",
     "clean": "rimraf dist",
     "lint": "eslint '**/*.{js,ts,tsx}'",
     "lint:fix": "npm run lint -- --fix",
@@ -56,6 +58,7 @@
     "@rollup/plugin-commonjs": "^13.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^8.0.1",
+    "@rollup/plugin-replace": "^2.3.3",
     "@testing-library/react": "^10.3.0",
     "@testing-library/react-hooks": "^3.3.0",
     "@types/jest": "^26.0.0",
@@ -101,7 +104,7 @@
     "*.{js,ts,tsx}": [
       "npm run lint:fix"
     ],
-    "*.{md,json}": [
+    "*.{md,json,yml}": [
       "prettier --write"
     ]
   }
