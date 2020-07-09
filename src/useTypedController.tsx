@@ -15,6 +15,9 @@ export const useTypedController = <
 >({
   control,
 }: Options<TControl>) => {
+  const controlRef = React.useRef(control);
+  controlRef.current = control;
+
   const TypedController = React.useCallback(
     <
       UFieldValues extends TFieldValues,
@@ -26,10 +29,14 @@ export const useTypedController = <
     }: ControllerProps<UFieldValues, TFieldName, TAs>) => {
       const formattedName = formatName(name as any);
       return (
-        <Controller name={formattedName as any} control={control} {...rest} />
+        <Controller
+          name={formattedName as any}
+          control={controlRef.current}
+          {...rest}
+        />
       );
     },
-    [control],
+    [],
   );
 
   return TypedController;
