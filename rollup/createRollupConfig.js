@@ -8,11 +8,13 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import sourcemaps from 'rollup-plugin-sourcemaps';
 import { terser } from 'rollup-plugin-terser';
-
-const name = 'index';
-const umdName = 'ReactHookFormStrictTyped';
+import { safePackageName } from './safePackageName';
+import { pascalcase } from './pascalcase';
+import pkg from '../package.json';
 
 export function createRollupConfig(options) {
+  const name = options.name || safePackageName(pkg.name);
+  const umdName = options.umdName || pascalcase(safePackageName(pkg.name));
   const shouldMinify = options.minify || options.env === 'production';
   const tsconfigPath = options.tsconfig || 'tsconfig.json';
   const tsconfigJSON = ts.readConfigFile(tsconfigPath, ts.sys.readFile).config;
@@ -47,7 +49,9 @@ export function createRollupConfig(options) {
       exports: 'named',
     },
     plugins: [
-      external(),
+      external({
+        includeDependencies: options.format !== 'umd',
+      }),
       json(),
       typescript({
         tsconfig: options.tsconfig,

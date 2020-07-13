@@ -18,9 +18,9 @@
     "access": "public"
   },
   "scripts": {
+    "clean": "rimraf dist",
     "prebuild": "npm run clean",
     "build": "node rollup/writeCjsEntryFile.js && rollup -c",
-    "clean": "rimraf dist",
     "lint": "eslint '**/*.{js,ts,tsx}'",
     "lint:fix": "npm run lint -- --fix",
     "lint:types": "tsc --noEmit",
