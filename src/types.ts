@@ -108,6 +108,8 @@ export type NonUndefined<T> = T extends undefined ? never : T;
 
 export type UnpackNestedValue<T> = NonUndefined<T> extends NestedValue<infer U>
   ? U
+  : NonUndefined<T> extends Date | FileList
+  ? T
   : NonUndefined<T> extends object
   ? { [K in keyof T]: UnpackNestedValue<T[K]> }
   : T;
