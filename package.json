@@ -8,7 +8,7 @@
   "unpkg": "dist/index.umd.production.min.js",
   "jsdelivr": "dist/index.umd.production.min.js",
   "jsnext:main": "dist/index.esm.js",
-  "source": "src/index.tsx",
+  "source": "src/index.ts",
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "files": [
@@ -81,7 +81,7 @@
     "prettier": "^2.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-hook-form": "^6.0.0-rc.5",
+    "react-hook-form": "^6.7.0",
     "react-test-renderer": "^16.13.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.17.0",
@@ -96,7 +96,7 @@
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0",
-    "react-hook-form": ">=6.0.0",
+    "react-hook-form": ">=6.6.0",
     "typescript": ">=3.0.1"
   },
   "husky": {
