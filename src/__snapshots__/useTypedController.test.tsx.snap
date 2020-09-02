@@ -3,6 +3,7 @@
 exports[`useTypedField should render correctly when as is input and name is string 1`] = `
 <DocumentFragment>
   <input
+    name="flat"
     value="test"
   />
 </DocumentFragment>
@@ -10,7 +11,9 @@ exports[`useTypedField should render correctly when as is input and name is stri
 
 exports[`useTypedField should render correctly when as is textarea and name is array 1`] = `
 <DocumentFragment>
-  <textarea>
+  <textarea
+    name="nested.object.test"
+  >
     test
   </textarea>
 </DocumentFragment>
@@ -19,6 +22,7 @@ exports[`useTypedField should render correctly when as is textarea and name is a
 exports[`useTypedField should render correctly when name is array and render is input 1`] = `
 <DocumentFragment>
   <input
+    name="nested.array[0].test"
     value="test"
   />
 </DocumentFragment>
@@ -26,7 +30,9 @@ exports[`useTypedField should render correctly when name is array and render is 
 
 exports[`useTypedField should render correctly when name is string and render is textarea 1`] = `
 <DocumentFragment>
-  <textarea>
+  <textarea
+    name="flat"
+  >
     test
   </textarea>
 </DocumentFragment>
