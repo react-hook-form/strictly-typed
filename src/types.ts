@@ -1,8 +1,14 @@
-import { NestedValue, Control } from 'react-hook-form';
+import {
+  FieldValues,
+  Control,
+  Message,
+  ValidationRule,
+  ValidateResult,
+} from 'react-hook-form';
 
 export type ArrayWithLength<N extends number> = { [K in N]: any };
 
-export interface DeepPathArray<TValues extends Record<string, any>, TPath>
+export interface DeepPathArray<TValues extends FieldValues, TPath>
   extends ReadonlyArray<string | number> {
   ['0']: keyof TValues;
   ['1']?: TPath extends {
@@ -73,7 +79,7 @@ export interface DeepPathArray<TValues extends Record<string, any>, TPath>
 }
 
 export type DeepPathArrayValue<
-  TValues extends Record<string, any>,
+  TValues extends FieldValues,
   TPath extends DeepPathArray<TValues, TPath>
 > = TPath extends ArrayWithLength<0 | 1 | 2 | 3 | 4 | 5 | 6>
   ? any
@@ -91,12 +97,12 @@ export type DeepPathArrayValue<
   ? TValues[TPath[0]]
   : never;
 
-export type DeepPath<TValues extends Record<string, any>, TPath> =
+export type DeepPath<TValues extends FieldValues, TPath> =
   | DeepPathArray<TValues, TPath>
   | keyof TValues;
 
 export type DeepPathValue<
-  TValues extends Record<string, any>,
+  TValues extends FieldValues,
   TPath extends DeepPath<TValues, TPath>
 > = TPath extends DeepPathArray<TValues, TPath>
   ? DeepPathArrayValue<TValues, TPath>
@@ -104,40 +110,9 @@ export type DeepPathValue<
   ? TValues[TPath]
   : any;
 
-export type NonUndefined<T> = T extends undefined ? never : T;
-
-export type UnpackNestedValue<T> = NonUndefined<T> extends NestedValue<infer U>
-  ? U
-  : NonUndefined<T> extends Date | FileList
-  ? T
-  : NonUndefined<T> extends object
-  ? { [K in keyof T]: UnpackNestedValue<T[K]> }
-  : T;
-
-export type FieldValuesFromControl<
-  TControl extends Control
-> = TControl extends Control<infer TFieldValues> ? TFieldValues : never;
-
 export type Options<TControl extends Control> = {
   control?: TControl;
 };
-
-export type Message = string;
-
-export type ValidationValue = boolean | number | string | RegExp;
-
-export type ValidationRule<
-  TValidationValue extends ValidationValue = ValidationValue
-> = TValidationValue | ValidationValueMessage<TValidationValue>;
-
-export type ValidationValueMessage<
-  TValidationValue extends ValidationValue = ValidationValue
-> = {
-  value: TValidationValue;
-  message: Message;
-};
-
-export type ValidateResult = Message | Message[] | boolean | undefined;
 
 export type Validate<TFieldValue> = (
   data: TFieldValue,
@@ -157,7 +132,7 @@ export type Assign<TValues extends object, U extends object> = TValues &
   Omit<U, keyof TValues>;
 
 export type ControllerProps<
-  TFieldValues extends Record<string, any>,
+  TFieldValues extends FieldValues,
   TFieldName extends DeepPath<TFieldValues, TFieldName>,
   TAs extends 'input' | 'select' | 'textarea'
 > = Assign<

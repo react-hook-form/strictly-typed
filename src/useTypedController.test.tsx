@@ -4,9 +4,12 @@ import { render } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import { useTypedController } from './useTypedController';
 
-const reconfigureControl = (
+export const reconfigureControl = (
   controlOverrides: Partial<Control> = {},
 ): Control => ({
+  unmountFieldsStateRef: {
+    current: {},
+  },
   defaultValuesRef: {
     current: {},
   },
@@ -25,9 +28,6 @@ const reconfigureControl = (
   watchFieldsRef: {
     current: new Set(),
   },
-  dirtyFieldsRef: {
-    current: {},
-  },
   watchFieldsHookRef: {
     current: {},
   },
@@ -35,28 +35,35 @@ const reconfigureControl = (
     current: {},
   },
   watchInternal: jest.fn(),
-  validateSchemaIsValid: jest.fn(),
-  reRender: jest.fn(),
+  validateResolver: jest.fn(),
   setValue: jest.fn(),
+  getValues: jest.fn(),
   register: jest.fn(),
   unregister: jest.fn(),
   trigger: jest.fn(),
   removeFieldEventListener: jest.fn(),
-  errorsRef: { current: {} },
-  touchedFieldsRef: { current: {} },
-  mode: { isOnSubmit: false, isOnBlur: false, isOnChange: false },
+  mode: {
+    isOnSubmit: false,
+    isOnBlur: false,
+    isOnChange: false,
+    isOnTouch: false,
+    isOnAll: false,
+  },
   reValidateMode: {
     isReValidateOnBlur: false,
-    isReValidateOnSubmit: false,
+    isReValidateOnChange: false,
   },
-  formState: {
-    isDirty: false,
-    isSubmitted: false,
-    dirtyFields: {},
-    submitCount: 0,
-    touched: {},
-    isSubmitting: false,
-    isValid: false,
+  formStateRef: {
+    current: {
+      errors: {},
+      isDirty: false,
+      isSubmitted: false,
+      dirtyFields: {},
+      submitCount: 0,
+      touched: {},
+      isSubmitting: false,
+      isValid: false,
+    },
   },
   fieldsRef: {
     current: {},
@@ -67,15 +74,12 @@ const reconfigureControl = (
   fieldArrayNamesRef: {
     current: new Set<string>(),
   },
-  isDirtyRef: {
-    current: false,
-  },
-  isSubmittedRef: {
-    current: false,
-  },
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  updateFormState: () => {},
   readFormStateRef: {
     current: {
       isDirty: true,
+      errors: true,
       isSubmitted: false,
       submitCount: false,
       touched: false,
@@ -86,7 +90,6 @@ const reconfigureControl = (
   },
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   renderWatchedInputs: () => {},
-  unmountFieldsStateRef: { current: {} },
   ...controlOverrides,
 });
 
