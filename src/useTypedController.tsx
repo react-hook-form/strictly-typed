@@ -31,7 +31,7 @@ export const useTypedController = <
         <Controller
           name={formattedName as any}
           control={controlRef.current}
-          {...rest}
+          {...(rest as any)}
         />
       );
     },
