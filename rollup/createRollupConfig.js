@@ -34,6 +34,13 @@ export function createRollupConfig(options) {
     .filter(Boolean)
     .join('.');
 
+  let paths;
+  if (options.formatName === 'ie11') {
+    paths = {
+      'react-hook-form': 'react-hook-form/dist/index.ie11',
+    };
+  }
+
   return {
     input: options.input,
     output: {
@@ -47,6 +54,7 @@ export function createRollupConfig(options) {
         'react-hook-form': 'ReactHookForm',
       },
       exports: 'named',
+      paths,
     },
     plugins: [
       external({

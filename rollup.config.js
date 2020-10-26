@@ -21,6 +21,14 @@ const options = [
   {
     name,
     umdName,
+    formatName: 'ie11',
+    format: 'cjs',
+    env: 'production',
+    input: pkg.source,
+  },
+  {
+    name,
+    umdName,
     format: 'esm',
     input: pkg.source,
   },
