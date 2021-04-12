@@ -146,6 +146,7 @@ export type ControllerProps<
       onChange: (...event: any[]) => void;
       onBlur: () => void;
       value: DeepPathValue<TFieldValues, TFieldName>;
+      ref: React.MutableRefObject<any>;
     }) => React.ReactElement;
   },
   JSX.IntrinsicElements[TAs]
