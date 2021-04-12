@@ -136,17 +136,24 @@ export type ControllerProps<
   TFieldName extends DeepPath<TFieldValues, TFieldName>,
   TAs extends 'input' | 'select' | 'textarea'
 > = Assign<
-  {
+  (
+    | {
+        as: TAs;
+        render?: undefined;
+      }
+    | {
+        as?: undefined;
+        render: (props: {
+          onChange: (...event: any[]) => void;
+          onBlur: () => void;
+          value: DeepPathValue<TFieldValues, TFieldName>;
+        }) => React.ReactElement;
+      }
+  ) & {
     name: TFieldName;
-    as?: TAs;
     rules?: ValidationRules<DeepPathValue<TFieldValues, TFieldName>>;
     onFocus?: () => void;
     defaultValue?: DeepPathValue<TFieldValues, TFieldName>;
-    render?: (props: {
-      onChange: (...event: any[]) => void;
-      onBlur: () => void;
-      value: DeepPathValue<TFieldValues, TFieldName>;
-    }) => React.ReactElement;
   },
   JSX.IntrinsicElements[TAs]
 >;
